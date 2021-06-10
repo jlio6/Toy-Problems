@@ -1,4 +1,7 @@
 const countUniqueValues = (array) => {
+  if (array.length === 0) {
+    return 0;
+  }
   let first = 0;
   let second = 1;
   let count = 1;
