@@ -18,4 +18,4 @@ const countUniqueValues = (array) => {
   return count;
 }
 
-console.log(countUniqueValues([1, 1, 1]));
+console.log(countUniqueValues([1, 1, 1, 2]));
