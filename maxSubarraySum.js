@@ -15,4 +15,4 @@ const maxSubarraySum = (array, size) => {
   return max;
 }
 
-console.log(maxSubarraySum([2, 5, 7, 1, 5, 2, 6, 9, 4, 6, 8], 4));
+console.log(maxSubarraySum([100, 200, 300, 400], 2));
