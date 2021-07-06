@@ -129,7 +129,22 @@ class SinglyLinkedList {
   }
 
   reverse() {
+    let prvs = null;
+    let curr = this.head;
+    let next;
 
+    while (curr) {
+      next = curr.next;
+      curr.next = prvs;
+      prvs = curr;
+      curr = next;
+    }
+
+    let temp = this.head;
+    this.head = this.tail;
+    this.tail = temp;
+
+    return this;
   }
 }
 
@@ -137,6 +152,9 @@ let list = new SinglyLinkedList();
 list.unshift(8);
 list.unshift(6);
 list.unshift(7);
-list.remove(2);
+list.push(10);
+list.reverse();
 
-console.log(list);
+console.log(list.head);
+console.log(list.tail);
+
