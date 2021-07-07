@@ -74,12 +74,102 @@ class DoublyLinkedList {
     this.length++;
     return this;
   }
+
+  get(index) {
+    if (index < 0 || index >= this.length) {
+      return null;
+    }
+    let current;
+    if (index <= this.length / 2) {
+      let count = 0;
+      current = this.head;
+      while (count < index) {
+        current = current.next;
+        count++;
+      }
+    } else {
+      let count = this.length - 1;
+      current = this.tail;
+      while (count > index) {
+        current = current.prv;
+        count--;
+      }
+    }
+    return current;
+  }
+
+  set(index, val) {
+    let current = get(index);
+    if (current) {
+      current.val = val;
+      return true;
+    }
+    return false;
+  }
+
+  insert(index, val) {
+    if (index < 0 || index >= this.length) {
+      return false;
+    }
+    if (index === 0) {
+      this.unshift(val);
+    } else if (index === this.length - 1) {
+      this.push(val);
+    } else {
+      let newNode = new Node(val);
+      let current = this.get(index);
+      let temp = current.next;
+      current.next = newNode;
+      newNode.prv = current;
+      temp.prv = newNode;
+      newNode.next = temp;
+      this.length++;
+    }
+    return true;
+  }
+
+  remove(index) {
+    if (index < 0 || index >= this.length) {
+      return false;
+    }
+    if (index === 0) {
+      this.shift(val);
+    } else if (index === this.length - 1) {
+      this.pop(val);
+    } else {
+      let temp = this.get(index);
+      temp.prv.next = temp.next;
+      temp.next.prv = temp.prv;
+      temp.prv = null;
+      temp.next = null;
+      this.length--;
+    }
+    return true;
+  }
+
+  reverse() {
+    let P = null;
+    let C = this.head;
+    let N;
+    while (C) {
+      N = C.next;
+      C.next = P;
+      C.prv = N;
+      P = C;
+      C = N;
+    }
+
+    let temp = this.head;
+    this.head = this.tail;
+    this.tail = temp;
+    return this;
+  }
 }
 
 let list = new DoublyLinkedList();
 list.push(1);
 list.push(2);
 list.push(3);
-list.unshift(4);
-
+list.unshift(0);
+list.reverse();
 console.log(list);
