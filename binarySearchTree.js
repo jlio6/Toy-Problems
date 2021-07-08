@@ -36,6 +36,21 @@ class BinarySearchTree {
     }
   }
 
+  contains(target, current = this.root) {
+    if (current === null) {
+      return false;
+    }
+    if (current.val === target) {
+      return true;
+    }
+    if (target < current.val) {
+      return this.contains(target, current.left);
+    }
+    if (target > current.val) {
+      return this.contains(target, current.right);
+    }
+  }
+
 }
 
 let bst = new BinarySearchTree();
@@ -44,4 +59,5 @@ bst.insert(5);
 bst.insert(11);
 bst.insert(12);
 
-console.log(bst);
+
+console.log(bst.contains(9));
