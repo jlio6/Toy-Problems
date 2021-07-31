@@ -38,8 +38,17 @@
   return newHead;
 };
 
-//              3
-//              |
-//              v
-//    2 -> 1 -> 4 -> 5 -> 6
-//  2 -> 1 -> 3 -> 4
+/*
+ RECURSIVE SOLUTION HERE
+ */
+
+ var swapPairs = function(head) {
+  if (!head || !head.next) {
+      return head;
+  }
+  let newHead = head.next;
+  let thirdNode = head.next.next;
+  head.next.next = head;
+  head.next = swapPairs(thirdNode);
+  return newHead;
+};
