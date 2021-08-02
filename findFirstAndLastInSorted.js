@@ -23,20 +23,23 @@ var searchRange = function(nums, target) {
           result[0] = mid;
           low = mid;
           hi = nums.length - 1;
-          while (low <= hi) {
-              mid = low + Math.floor((hi - low) / 2);
-              if (nums[mid + 1] === target) {
-                  low = mid + 1;
-              } else if (nums[mid] > target) {
-                  hi = mid - 1;
-              } else {
-                  result[1] = mid;
-                  break;
-              }
-          }
+
           break;
       }
   }
+
+  while (low <= hi) {
+    mid = low + Math.floor((hi - low) / 2);
+    if (nums[mid + 1] === target) {
+        low = mid + 1;
+    } else if (nums[mid] > target) {
+        hi = mid - 1;
+    } else {
+        result[1] = mid;
+        break;
+    }
+  }
+
   return result;
 };
 
